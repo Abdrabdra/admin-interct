@@ -31,9 +31,9 @@ const ProfileForm: FC<Props> = ({ data }) => {
       </Typography>
       <Formik
         initialValues={{
-          firstName: data?.firstName,
-          secondName: data?.secondName,
-          email: data?.email,
+          firstName: data?.phone,
+          secondName: data?.money,
+          email: data?.id,
         }}
         onSubmit={(values) => {
           update({ ...values });
@@ -41,30 +41,30 @@ const ProfileForm: FC<Props> = ({ data }) => {
       >
         {({ values, errors, handleChange }) => (
           <Form>
-            <Typography sx={{ mb: "10px" }}>Имя</Typography>
+            <Typography sx={{ mb: "10px" }}>Номер</Typography>
             <StyledInput
               name={"firstName"}
               value={values.firstName}
               onChange={handleChange}
-              label="Имя"
+              label="Номер"
               sx={{ mb: "20px" }}
             />
 
-            <Typography sx={{ mb: "10px" }}>Фамилия</Typography>
+            <Typography sx={{ mb: "10px" }}>Счет</Typography>
             <StyledInput
               name={"secondName"}
               value={values.secondName}
               onChange={handleChange}
-              label="Фамилия"
+              label="Счет"
               sx={{ mb: "20px" }}
             />
 
-            <Typography sx={{ mb: "10px" }}>Почта</Typography>
+            <Typography sx={{ mb: "10px" }}>Артикул</Typography>
             <StyledInput
               name={"email"}
               value={values.email}
               onChange={handleChange}
-              label="Почта"
+              label="Артикул"
               sx={{ mb: "20px" }}
             />
 

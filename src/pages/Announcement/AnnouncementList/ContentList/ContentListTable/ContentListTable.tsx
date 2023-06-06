@@ -22,12 +22,14 @@ import {
   TableDivider,
 } from "../../../../../components/Table/TableRounded/TableRounded.module";
 import { IAnnouncement } from "../../../../../types/Announcement/Announcement.type";
+import { SessionStatus } from "../../../../../types/Enums";
+import { ISessionData } from "../../../../../types/ISession";
 import numberWithSpaces from "../../../../../utils/numberWithSpaces";
 
 const tableHead = ["Название", "Артикул", "Категория"];
 
 interface Props {
-  tableData: IAnnouncement[];
+  tableData: ISessionData[];
 }
 
 const ContentListTable: FC<Props> = ({ tableData }) => {
@@ -66,9 +68,9 @@ const ContentListTable: FC<Props> = ({ tableData }) => {
                       height: "60px",
                     }}
                   >
-                    {row?.images[0]?.imageUrl && (
+                    {row?.bus.image && (
                       <img
-                        src={`${$image_api}/${row.images[0].imageUrl}`}
+                        src={`${$image_api}/${row.bus.image}`}
                         style={{
                           width: "100%",
                           height: "100%",
@@ -78,9 +80,11 @@ const ContentListTable: FC<Props> = ({ tableData }) => {
                     )}
                   </Box>
                   <Stack justifyContent={"center"}>
-                    <Typography>{row.title}</Typography>
+                    <Typography>
+                      {row.cityFrom.title + " - " + row.cityTo.title}
+                    </Typography>
                     <Typography variant="h6" sx={{ color: "primary.main" }}>
-                      {`${numberWithSpaces(row.price)} KZT`}
+                      {`${numberWithSpaces(row.bus.type.cost)} KZT`}
                     </Typography>
                   </Stack>
                 </Stack>
@@ -88,7 +92,9 @@ const ContentListTable: FC<Props> = ({ tableData }) => {
 
               <StyledBodyCell>{row.id}</StyledBodyCell>
 
-              <StyledBodyCell>Мебель</StyledBodyCell>
+              <StyledBodyCell>
+                <ChipStatus status={row.status} />
+              </StyledBodyCell>
 
               <StyledBodyCellLast>
                 <MainBaseButton

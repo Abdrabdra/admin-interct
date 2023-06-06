@@ -34,7 +34,7 @@ const DistrictListRow: React.FC<RowProps> = ({ row, cityName }) => {
       {data?.map((row) => (
         <Stack sx={{ pl: 3 }}>
           <Typography>Арктикул: {row.id}</Typography>
-          <Typography>Арктикул: {row.title}</Typography>
+          <Typography>Название: {row.title}</Typography>
         </Stack>
       ))}
     </Stack>

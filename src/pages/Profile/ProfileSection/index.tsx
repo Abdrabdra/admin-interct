@@ -30,7 +30,7 @@ const ProfileSection = () => {
       {data && (
         <>
           <LeftSideBlock
-            data={{ secondName: data?.secondName, firstName: data?.firstName }}
+            data={{ secondName: data?.phone, firstName: data?.bus.number }}
           />
           <RightSideBlock data={data} />
         </>

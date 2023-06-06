@@ -1,22 +1,22 @@
 import { Chip } from "@mui/material";
 import { FC } from "react";
-import { Status } from "../../../types/Enums";
+import { SessionStatus, Status } from "../../../types/Enums";
 
 interface Props {
-  status: Status;
+  status: SessionStatus;
 }
 
 const ChipStatus: FC<Props> = ({ status }) => {
   return (
     <Chip
       label={
-        status === Status.NEW
-          ? "Новый"
-          : status === Status.DENIED
-          ? "Не подтверждено"
-          : status === Status.ACCEPTED
-          ? "Подтверждено"
-          : "Удалено"
+        status === SessionStatus.COLLECTS
+          ? "В ожиданий"
+          : status === SessionStatus.InTransit
+          ? "В пути"
+          : status === SessionStatus.FINISH
+          ? "Выполнено"
+          : "Ошибка"
       }
       sx={{
         maxWidth: "175px",
@@ -26,11 +26,11 @@ const ChipStatus: FC<Props> = ({ status }) => {
         fontSize: "16px",
         fontWeight: "600",
         backgroundColor:
-          status === Status.NEW
+          status === SessionStatus.COLLECTS
             ? "#222222"
-            : status === Status.DENIED
-            ? "#F40000"
-            : status === Status.ACCEPTED
+            : status === SessionStatus.InTransit
+            ? "secondary.main"
+            : status === SessionStatus.FINISH
             ? "#2DC36A"
             : "secondary.light",
       }}

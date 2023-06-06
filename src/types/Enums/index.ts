@@ -28,3 +28,10 @@ export enum Status {
   DELETED = "deleted",
   DENIED = "denied",
 }
+
+export enum SessionStatus {
+	COLLECTS = "collects",
+	InTransit = "inTransit",
+	FINISH = "finish"
+}
+

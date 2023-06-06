@@ -20,15 +20,14 @@ import {
   StyledHeadRow,
   TableDivider,
 } from "../../../../../components/Table/TableRounded/TableRounded.module";
-import {
-  IAnnouncement,
-} from "../../../../../types/Announcement/Announcement.type";
+import { IAnnouncement } from "../../../../../types/Announcement/Announcement.type";
+import { ISessionData } from "../../../../../types/ISession";
 import numberWithSpaces from "../../../../../utils/numberWithSpaces";
 
-const tableHead = ["Объявление", "Статус", "Категория"];
+const tableHead = ["Объявление", "Статус", "Дата Отправления"];
 
 interface Props {
-  tableData: any[];
+  tableData: ISessionData[];
 }
 
 const ContentListTable: FC<Props> = ({ tableData }) => {
@@ -54,41 +53,50 @@ const ContentListTable: FC<Props> = ({ tableData }) => {
         </TableHead>
 
         <TableBody>
-          {tableData.map((row) => (
-            <StyledBodyRow key={row.id}>
-              <StyledBodyCellFirst>
-                <Stack direction="row" spacing={1}>
-                  <Box
-                    sx={{
-                      backgroundColor: "primary.main",
-                      borderRadius: "10px",
-                      minWidth: "60px",
-                      width: "60px",
-                      height: "60px",
-                    }}
-                  ></Box>
-                  <Stack justifyContent={"center"}>
-                    <Typography variant="h6" sx={{ color: "#2DC36A" }}>
-                      {`${numberWithSpaces(row.price)} KZT`}
-                    </Typography>
+          {tableData.map((row) => {
+            const date = new Date(row.arrivalDate);
+            return (
+              <StyledBodyRow key={row.id}>
+                <StyledBodyCellFirst>
+                  <Stack direction="row" spacing={1}>
+                    <Box
+                      sx={{
+                        backgroundColor: "primary.main",
+                        borderRadius: "10px",
+                        minWidth: "60px",
+                        width: "60px",
+                        height: "60px",
+                      }}
+                    ></Box>
+                    <Stack justifyContent={"center"}>
+                      <Typography variant="h6" sx={{ color: "#2DC36A" }}>
+                        {`${numberWithSpaces(row.bus.type.cost)} KZT`}
+                      </Typography>
+                    </Stack>
                   </Stack>
-                </Stack>
-              </StyledBodyCellFirst>
-              <StyledBodyCell>
-                <ChipStatus status={row.status} />
-              </StyledBodyCell>
-              <StyledBodyCell>Мебель</StyledBodyCell>
-              <StyledBodyCellLast>
-                <MainBaseButton
-                  onClick={() => handleNavigate(row.id)}
-                  bgcolor="#2DC36A"
-                  sx={{ height: "40px", maxWidth: "180px" }}
-                >
-                  Подробнее
-                </MainBaseButton>
-              </StyledBodyCellLast>
-            </StyledBodyRow>
-          ))}
+                </StyledBodyCellFirst>
+                <StyledBodyCell>
+                  <ChipStatus status={row.status} />
+                </StyledBodyCell>
+                <StyledBodyCell>
+                  {date.getDay() +
+                    "." +
+                    (date.getMonth() + 1) +
+                    "." +
+                    date.getFullYear()}
+                </StyledBodyCell>
+                <StyledBodyCellLast>
+                  <MainBaseButton
+                    onClick={() => handleNavigate(row.id)}
+                    bgcolor="#2DC36A"
+                    sx={{ height: "40px", maxWidth: "180px" }}
+                  >
+                    Подробнее
+                  </MainBaseButton>
+                </StyledBodyCellLast>
+              </StyledBodyRow>
+            );
+          })}
         </TableBody>
       </Table>
     </TableContainer>

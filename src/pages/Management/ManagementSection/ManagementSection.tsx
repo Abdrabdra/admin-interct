@@ -94,22 +94,6 @@ const ManagementSection = () => {
             label="Place"
             onClick={() => navigate("/app/management/category")}
           />
-
-          <Tab
-            icon={<PaletteIcon />}
-            label="Цвет Продукта"
-            onClick={() => navigate("/app/management/product-info-color")}
-          />
-          <Tab
-            icon={<ChairIcon />}
-            label="Декор Продукта"
-            onClick={() => navigate("/app/management/product-info-decor")}
-          />
-          <Tab
-            icon={<CropIcon />}
-            label="Каркас Продукта"
-            onClick={() => navigate("/app/management/product-info-frame")}
-          />
         </Tabs>
       </Box>
 
@@ -119,16 +103,6 @@ const ManagementSection = () => {
 
       <TabPanel value={value} index={1}>
         <CategoryTab />
-      </TabPanel>
-
-      <TabPanel value={value} index={2}>
-        <ProductColorTab />
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-        <ProductDecorTab />
-      </TabPanel>
-      <TabPanel value={value} index={4}>
-        <ProductFrameTab />
       </TabPanel>
     </Box>
   );

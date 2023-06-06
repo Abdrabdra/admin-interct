@@ -2,14 +2,15 @@ import {
   IAnnouncementsResponse,
 } from "../../../../types/Announcement/Announcement.type";
 import { IOneAnnouncement } from "../../../../types/Announcement/OneAnnouncement.type";
+import { ISessionResponse } from "../../../../types/ISession";
 import productApi from "./productApi";
 
 export const productEndpoints = productApi.injectEndpoints({
   endpoints: (builder) => ({
-    getProducts: builder.query<IAnnouncementsResponse, object>({
+    getProducts: builder.query<ISessionResponse, object>({
       query: (arg) => {
         return {
-          url: `/product/admin`,
+          url: `/session`,
           params: { ...arg },
         };
       },

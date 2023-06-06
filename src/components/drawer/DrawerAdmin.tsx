@@ -41,25 +41,25 @@ const links = [
     icon: PersonRoundedIcon,
   },
   {
-    text: "Товары",
+    text: "Объявления",
     route: "announcement",
     icon: Inventory2RoundedIcon,
   },
   {
-    text: "Заказы",
+    text: "Транспорты",
     route: "order",
     icon: LocalShippingRoundedIcon,
   },
-  {
-    text: "Пользователи",
-    route: "user",
-    icon: GroupRoundedIcon,
-  },
-  {
-    text: "Магазины",
-    route: "shop",
-    icon: StoreRoundedIcon,
-  },
+  // {
+  //   text: "Пользователи",
+  //   route: "user",
+  //   icon: GroupRoundedIcon,
+  // },
+  // {
+  //   text: "Места посадки",
+  //   route: "shop",
+  //   icon: StoreRoundedIcon,
+  // },
 ];
 
 const DrawerAdmin = () => {
@@ -93,7 +93,7 @@ const DrawerAdmin = () => {
             <Box
               sx={{ fontWeight: 700, letterSpacing: "1px", fontSize: "32px" }}
             >
-              iSandyq
+              InterCT Admin
             </Box>
           </Toolbar>
         </NavLink>

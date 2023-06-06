@@ -5,7 +5,7 @@ export const profileEndpoints = profileApi.injectEndpoints({
     endpoints: (builder) => ({
         getMyProfile: builder.query<IProfile, any>({
             query: () => ({
-                url: `profile/me`,
+                url: `user/me`,
                 method: "GET"
             }),
             providesTags: ["profile"],
