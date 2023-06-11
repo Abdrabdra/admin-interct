@@ -68,16 +68,15 @@ const ContentListTable: FC<Props> = ({ tableData }) => {
                       height: "60px",
                     }}
                   >
-                    {row?.bus.image && (
-                      <img
-                        src={`${$image_api}/${row.bus.image}`}
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                          borderRadius: "10px",
-                        }}
-                      />
-                    )}
+                    <img
+                      src={`${$image_api}${row.bus.image}`}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        borderRadius: "10px",
+                        objectFit: "cover"
+                      }}
+                    />
                   </Box>
                   <Stack justifyContent={"center"}>
                     <Typography>

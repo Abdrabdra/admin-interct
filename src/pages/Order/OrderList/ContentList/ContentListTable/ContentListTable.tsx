@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
+import { $image_api } from "../../../../../api";
 import MainBaseButton from "../../../../../components/Button/MainBaseButton/MainBaseButton";
 import ChipStatus from "../../../../../components/Chip/ChipStatus";
 import {
@@ -67,7 +68,17 @@ const ContentListTable: FC<Props> = ({ tableData }) => {
                         width: "60px",
                         height: "60px",
                       }}
-                    ></Box>
+                    >
+                      <img
+                        src={$image_api + row.bus.image}
+                        style={{
+                          width: "60px",
+                          height: "60px",
+                          borderRadius: "10px",
+                          objectFit: "cover",
+                        }}
+                      />
+                    </Box>
                     <Stack justifyContent={"center"}>
                       <Typography variant="h6" sx={{ color: "#2DC36A" }}>
                         {`${numberWithSpaces(row.bus.type.cost)} KZT`}
