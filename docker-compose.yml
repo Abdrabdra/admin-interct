@@ -27,7 +27,7 @@ services:
     volumes:
       - www-html:/var/www/html
       - etc-letsencrypt:/etc/letsencrypt
-    command: certonly --webroot --webroot-path=/var/www/html --email almas@gmail.com  --agree-tos --no-eff-email -d admin.loom.kz
+    command: certonly --webroot --webroot-path=/var/www/html --email almas@gmail.com  --agree-tos --no-eff-email -d admin.7kzu.kz
 volumes:
   www-html:
   etc-letsencrypt:
